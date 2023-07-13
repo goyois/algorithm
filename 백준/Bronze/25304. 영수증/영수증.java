@@ -3,20 +3,26 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
+
+        //총 금액 x
+        //물건의 종류 수 N
+        //물건 값(공백)갯수
+
+
         Scanner sc = new Scanner(System.in);
 
-        int x = sc.nextInt();  //총 금액
-        int n = sc.nextInt();  //구매 물건 갯수
+        int totalPrice = sc.nextInt();
+        int totalSize = sc.nextInt();
+        int result = 0;
 
-        int arr[] = new int[n]; //길이가 4인 배열 생성
-        int sum = 0;
-
-
-        for (int i = 0; i < arr.length; i++) {  //갯수만큼 반복
-            int a = sc.nextInt();  //가격
-            int b = sc.nextInt();  //수량
-            sum += a * b;
+        for (int i = 1; i <= totalSize; i++) {
+            int price = sc.nextInt();
+            int total = sc.nextInt();
+            result += price * total;
+            }
+        if (result == totalPrice) {
+            System.out.println("Yes");
+        }else
+        System.out.println("No");
         }
-        System.out.println(sum == x ? "Yes" : "No");
     }
-}
