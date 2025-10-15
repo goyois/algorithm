@@ -4,12 +4,11 @@ class Solution {
 
 		for (int i = 1; i < food.length; i++) {
 			for (int j = 0; j < food[i] / 2; j++) {
-				answer.append(String.valueOf(i));
+				answer.append(i);
 			}
 		}
 		StringBuilder sb = new StringBuilder(answer).reverse();
-		answer.append("0");
-		answer.append(sb.toString());
+		answer.append("0" + sb);
         return answer.toString();
     }
 }
