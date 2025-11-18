@@ -1,0 +1,8 @@
+-- 코드를 작성해주세요
+SELECT I.ITEM_ID,I.ITEM_NAME,I.RARITY
+FROM ITEM_INFO I
+WHERE NOT EXISTS (SELECT 1
+                  FROM ITEM_TREE T
+                  WHERE T.PARENT_ITEM_ID = I.ITEM_ID
+                 )
+ORDER BY 1 DESC;
