@@ -1,9 +1,11 @@
 import java.util.*;
+
 class Solution {
     public int[] solution(int[] progresses, int[] speeds) {
         LinkedHashMap<Integer,Integer> map = new LinkedHashMap<>();
         Queue<Integer> pq = new LinkedList<>();
         Queue<Integer> sq = new LinkedList<>();
+
         for (int x : progresses) {
             pq.offer(x);
         }
@@ -18,6 +20,7 @@ class Solution {
             day++;
         }
         map.put(day,1);
+
 
         for (int x : sq) {
             int prog = pq.poll();
