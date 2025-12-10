@@ -1,22 +1,22 @@
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+
+import java.io.*;
 
 public class Main {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         int n = Integer.parseInt(br.readLine());
 
         for (int i = 0; i < n; i++) {
-            String[] words = br.readLine().split(" ");
-
-            for (String word : words) {
-                StringBuilder sb = new StringBuilder(word);
-                System.out.print(sb.reverse().toString() + " ");
+            String s = br.readLine();
+            StringBuilder sb = new StringBuilder();
+            for (String str : s.split(" ")) {
+                sb.append(new StringBuilder(str).reverse().toString()+" ");
             }
-            System.out.println();
+            bw.write(sb.toString());
+            bw.write("\n");
         }
-        br.close();
+        bw.flush();
     }
 }
