@@ -4,21 +4,16 @@ import java.util.*;
 //svr2 스택 수열
 public class Main {
     public static void main(String[] args) throws IOException {
-
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
-        Queue<Integer> queue = new LinkedList<>();
-        for (int i = 0; i < n; i++) {
-            queue.offer(i+1);
-        }
 
         Stack<Integer> stack = new Stack<>();
         StringBuilder sb = new StringBuilder();
+        int currentNum = 1;
         int cnt = 0;
-        
+
         for (int i = 0; i < n; i++) {
-            StringTokenizer st = new StringTokenizer(br.readLine());
-            int v = Integer.parseInt(st.nextToken());
+            int v = Integer.parseInt(br.readLine());
             while(true) {
                 if (!stack.isEmpty()) {
                     if (stack.peek() == v) {
@@ -27,21 +22,19 @@ public class Main {
                         sb.append("-" + "\n");
                         break;
                     } else {
-                        if (!queue.isEmpty()) {
-                            stack.push(queue.poll());
+                        if (currentNum <= n) {
+                            stack.push(currentNum++);
                             sb.append("+" + "\n");
                         } else break;
                     }
                 } else {
-                    if (!queue.isEmpty()) {
-                        stack.push(queue.poll());
+                    if (currentNum <= n) {
+                        stack.push(currentNum++);
                         sb.append("+" + "\n");
                     } else break;
                 }
             }
         }
-        
-        
         
         if (n == cnt) {
             System.out.println(sb.toString().stripTrailing());
