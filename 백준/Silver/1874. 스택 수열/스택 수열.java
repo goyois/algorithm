@@ -1,4 +1,3 @@
-
 import java.io.*;
 import java.util.*;
 
@@ -12,21 +11,19 @@ public class Main {
         for (int i = 0; i < n; i++) {
             queue.offer(i+1);
         }
-        
+
         Stack<Integer> stack = new Stack<>();
         StringBuilder sb = new StringBuilder();
-        StringBuilder s1 = new StringBuilder();
-        StringBuilder s2 = new StringBuilder();
-
-        while (n-- > 0) {
+        int cnt = 0;
+        
+        for (int i = 0; i < n; i++) {
             StringTokenizer st = new StringTokenizer(br.readLine());
             int v = Integer.parseInt(st.nextToken());
-            s1.append(v);
             while(true) {
                 if (!stack.isEmpty()) {
                     if (stack.peek() == v) {
-                        s2.append(stack.peek());
                         stack.pop();
+                        cnt++;
                         sb.append("-" + "\n");
                         break;
                     } else {
@@ -43,7 +40,10 @@ public class Main {
                 }
             }
         }
-        if (s1.toString().equals(s2.toString())) {
+        
+        
+        
+        if (n == cnt) {
             System.out.println(sb.toString().stripTrailing());
         } else System.out.println("NO");
     }
