@@ -1,3 +1,4 @@
+
 import java.io.*;
 import java.util.*;
 
@@ -15,19 +16,11 @@ public class Main {
         for (int i = 0; i < n; i++) {
             int v = Integer.parseInt(br.readLine());
             while(true) {
-                if (!stack.isEmpty()) {
-                    if (stack.peek() == v) {
+                if (!stack.isEmpty() && stack.peek() == v) {
                         stack.pop();
-                        cnt++;
-                        sb.append("-" + "\n");
+                        cnt++; sb.append("-" + "\n");
                         break;
                     } else {
-                        if (currentNum <= n) {
-                            stack.push(currentNum++);
-                            sb.append("+" + "\n");
-                        } else break;
-                    }
-                } else {
                     if (currentNum <= n) {
                         stack.push(currentNum++);
                         sb.append("+" + "\n");
@@ -35,7 +28,7 @@ public class Main {
                 }
             }
         }
-        
+
         if (n == cnt) {
             System.out.println(sb.toString().stripTrailing());
         } else System.out.println("NO");
