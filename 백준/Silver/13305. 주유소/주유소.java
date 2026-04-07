@@ -6,24 +6,25 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
-        int[] vex = new int[n-1];
-        int[] city = new int[n];
+        long[] vex = new long[n-1];
+        long[] city = new long[n];
 
         StringTokenizer st = new StringTokenizer(br.readLine()," ");
-        for (int i = 0; i < n-1; i++) vex[i] = Integer.parseInt(st.nextToken());
+        for (int i = 0; i < n-1; i++) vex[i] = Long.parseLong(st.nextToken());
         st = new StringTokenizer(br.readLine(), " ");
-        for (int i = 0; i < n; i++) city[i] = Integer.parseInt(st.nextToken());
+        for (int i = 0; i < n; i++) city[i] = Long.parseLong(st.nextToken());
 
-        long answer = 0; // 현재 비용
+        
+        
+        //내 도시의 주유소보다 앞으로 갈 도시의 주유소가 더 비싸면 그 도시 갯수를 세고
+        //내 도시에서부터 내 도시 주유소보다 비싸면 
+        //해당 도시에서 다음 도시로 가기 위한 거리만큼 내 도시의 가격으로 더 넣는다.
+        //그리고 다음 loop 에서 도시 갯수만큼 점프한 위치에서 시작한다.
 
-        //도시를 갈 때 마다 남은 리터가 0으로 떨어져야함
-        //첫번째 도시에서는 무조건 이동할 수 있는 만큼 넣는다.
-        //두번째 도시의 주유소 가격이 다음 도시 주유소 가격보다 싸면 다음 다음 거리만큼 더 넣고 간다.
-
-
+        long answer = 0;
         for (int i = 0; i < n-1; i++) {
             int cnt = 0;
-            int cost = 0;
+            long cost = 0;
 
             if (city[i] < city[i + 1]) {
                 for (int j = i + 1; j < n - 1; j++) {
@@ -34,7 +35,6 @@ public class Main {
                 }
                 answer += (city[i] * vex[i]) + cost;
             } else answer += city[i] * vex[i];
-
             i += cnt;
         }
         System.out.println(answer);
