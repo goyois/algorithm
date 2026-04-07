@@ -1,4 +1,3 @@
-
 import java.io.*;
 import java.util.*;
 
@@ -24,19 +23,19 @@ public class Main {
 
         for (int i = 0; i < n-1; i++) {
             int cnt = 0;
+            int cost = 0;
+
             if (city[i] < city[i + 1]) {
                 for (int j = i + 1; j < n - 1; j++) {
                     if (city[i] < city[j]) {
                         cnt++;
+                        cost += city[i] * vex[j];
                     } else break;
                 }
-                answer += city[i] * (vex[i] + cnt);
+                answer += (city[i] * vex[i]) + cost;
             } else answer += city[i] * vex[i];
 
-            if (cnt > 0) {
-                i += cnt;
-                cnt = 0;
-            }
+            i += cnt;
         }
         System.out.println(answer);
     }
